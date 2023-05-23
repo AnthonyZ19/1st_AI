@@ -9,8 +9,8 @@ class NeuralNetworkL:
     def Weights_Bias(self, inputs, neurons):
         self.Weights1 = np.random.randn(inputs, neurons)*.10
         self.Bias1 = np.random.randn(neurons)
-    def Layer1(self, inputs):
-        Layer1Output = np.dot(inputs ,self.Weights) + self.Bias
+    def Layer(self, inputs):
+        LayerOutput = np.dot(inputs ,self.Weights) + self.Bias
         return Layer1Output
     def ReLU(self, inputs):
         i = 0
@@ -29,11 +29,11 @@ class NeuralNetworkL:
 NNL1 = NeuralNetworkL(len(I), 6)
 print("Weights: " + str(NNL1.Weights))
 print("Bias's: " + str(NNL1.Bias))
-print(NNL1.Layer1(I))
-print(NNL1.ReLU(NNL1.Layer1(I)))
+print(NNL1.Layer(I))
+print(NNL1.ReLU(NNL1.Layer(I)))
 NNL2 = NeuralNetworkL(6,2)
 print("Weights 1: " + str(NNL2.Weights))
 print("Bias's 1: " + str(NNL2.Bias))
-L2O = NNL2.Layer1(NNL1.ReLU(NNL1.Layer1(I)))
-print(NNL2.Layer1(NNL1.ReLU(NNL1.Layer1(I))))
+L2O = NNL2.Layer(NNL1.ReLU(NNL1.Layer(I)))
+print(NNL2.Layer(NNL1.ReLU(NNL1.Layer(I))))
 print(NeuralNetworkL.SoftMax(L2O))
